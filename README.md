@@ -1,11 +1,12 @@
 # Swati Studio
 
-This version includes the Supabase authentication connection scaffold.
+GitHub Pages frontend connected to Supabase Auth and the `projects` table.
 
-## Important setup
-1. Open `assets/app.js`.
-2. The Supabase project URL and publishable key are already configured in `assets/app.js`.
-3. Do not put a service-role or secret key in this file.
-4. Serve the folder through a local web server or deploy it to hosting; ES module imports may not work from `file://`.
+## Upload
+Upload the contents of this folder to the root of your GitHub repository. Do not upload the outer folder itself if GitHub Pages cannot find `index.html`.
 
-The current project preview is still a demo. Real AI video rendering is not included yet; Login and email registration are connected to Supabase Auth.
+## Supabase
+Run `SUPABASE-SETUP.sql` once in Supabase SQL Editor. The frontend uses the Supabase project URL and publishable key in `assets/app.js`.
+
+## Important
+This build includes real email/password login, registration, session display, admin-role gate, and project metadata saving. It does **not** render a real AI face/voice video; that requires a separately approved rendering backend/API.
