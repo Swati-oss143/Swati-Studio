@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Swati Studio — AI Creator</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#">✨ Swati Studio</a>
+  <nav>
+    <a href="#workspace">Create</a>
+    <a href="#tools">Tools</a>
+    <a href="#admin">Admin CMS</a>
+    <button class="btn small" id="loginBtn">Login</button>
+  </nav>
+</header>
+
+<main>
+<section class="hero">
+  <div>
+    <span class="pill">Fresh AI Creator Platform</span>
+    <h1>Turn your script into your next video.</h1>
+    <p>Create video projects, Shorts, thumbnails, banners and logos from one organized workspace.</p>
+    <div class="actions">
+      <a class="btn" href="#workspace">Start Creating</a>
+      <a class="btn ghost" href="#tools">Explore Tools</a>
+    </div>
+  </div>
+  <div class="hero-panel">
+    <div class="orb"></div>
+    <h2>Swati Studio</h2>
+    <p>Script → Creative Project → Preview</p>
+    <div class="stat-grid">
+      <div><b>🎬</b><span>Video</span></div>
+      <div><b>📱</b><span>Shorts</span></div>
+      <div><b>🖼️</b><span>Thumbnail</span></div>
+      <div><b>🎨</b><span>Design</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="workspace" class="section">
+  <div class="section-heading">
+    <div><span class="eyebrow">Creator Workspace</span><h2>Create a project</h2></div>
+    <span class="status">Frontend demo</span>
+  </div>
+  <div class="workspace-grid">
+    <div class="panel">
+      <label for="script">Video script</label>
+      <textarea id="script" placeholder="Paste your Hindi or English script here..."></textarea>
+      <div class="two-col">
+        <div><label for="format">Content format</label><select id="format"><option>YouTube Video</option><option>YouTube Short</option></select></div>
+        <div><label for="language">Language</label><select id="language"><option>Hindi</option><option>English</option><option>Marathi</option></select></div>
+      </div>
+      <div class="upload-grid">
+        <div class="upload-box">
+          <label for="photo">Your photo / face image</label>
+          <input id="photo" type="file" accept="image/*">
+          <small id="photoName">No photo selected</small>
+          <img id="photoPreview" alt="Selected face preview" class="preview hidden">
+        </div>
+        <div class="upload-box">
+          <label for="voice">Your voice sample</label>
+          <input id="voice" type="file" accept="audio/*">
+          <small id="voiceName">No voice sample selected</small>
+          <audio id="voicePreview" controls class="hidden"></audio>
+        </div>
+      </div>
+      <label class="consent"><input type="checkbox" id="consent"> I confirm that I own or have permission to use this photo and voice.</label>
+      <button class="btn full" id="generateBtn">Generate Video Demo</button>
+      <p class="helper">The current prototype creates a local project preview. It does not render a real AI video yet.</p>
+    </div>
+    <div class="panel preview-panel">
+      <div class="preview-header"><h3>Video Preview</h3><span id="previewStatus" class="status">Waiting</span></div>
+      <div id="videoStage" class="video-stage">
+        <div class="play-icon">▶</div>
+        <p>Your generated preview will appear here.</p>
+      </div>
+      <div class="preview-details" id="previewDetails">No project generated yet.</div>
+      <button class="btn ghost full" id="downloadBtn" disabled>Download Project Report</button>
+    </div>
+  </div>
+</section>
+
+<section id="tools" class="section">
+  <span class="eyebrow">Creative Suite</span><h2>Design tools</h2>
+  <div class="cards">
+    <article><div class="icon">🖼️</div><h3>Thumbnail Maker</h3><p>Plan YouTube thumbnail concepts and text layouts.</p><button class="text-btn" data-tool="Thumbnail Maker">Open tool →</button></article>
+    <article><div class="icon">📺</div><h3>Banner Maker</h3><p>Prepare channel banner ideas and brand sections.</p><button class="text-btn" data-tool="Banner Maker">Open tool →</button></article>
+    <article><div class="icon">✨</div><h3>Logo Maker</h3><p>Build a clean logo concept for your creator brand.</p><button class="text-btn" data-tool="Logo Maker">Open tool →</button></article>
+    <article><div class="icon">🎨</div><h3>Photo & Design</h3><p>Organize future photo editing and design workflows.</p><button class="text-btn" data-tool="Photo & Design">Open tool →</button></article>
+  </div>
+  <div id="toolMessage" class="notice">Choose a tool to see its prototype status.</div>
+</section>
+
+<section id="admin" class="section">
+  <span class="eyebrow">Control Center</span><h2>Admin Dashboard CMS</h2>
+  <div class="admin-grid">
+    <div class="panel"><h3>Users & Roles</h3><p>Admin, Manager, Operator and Support role structure.</p><span class="tag">Planned integration</span></div>
+    <div class="panel"><h3>Generation Controls</h3><p>Future controls for limits, rendering settings and safety checks.</p><span class="tag">Planned integration</span></div>
+    <div class="panel"><h3>Website CMS</h3><p>Future editing for pages, text, buttons, images, sections and theme.</p><span class="tag">Planned integration</span></div>
+    <div class="panel"><h3>Reports & Settings</h3><p>Future reports, audit logs, maintenance mode and permissions.</p><span class="tag">Planned integration</span></div>
+  </div>
+</section>
+</main>
+
+<footer>© 2026 Swati Studio · Fresh project prototype</footer>
+
+<div id="loginModal" class="modal hidden">
+  <div class="modal-box">
+    <button class="close" id="closeLogin">×</button>
+    <h2>Login to Swati Studio</h2>
+    <input id="identity" placeholder="Email or mobile number">
+    <input id="password" type="password" placeholder="Password">
+    <div class="two-col"><button class="btn full" id="continueLogin">Login</button><button class="btn ghost full" id="registerBtn">Register</button></div><p class="helper">New users can register directly with email and password.</p>
+    <p id="loginMessage" class="helper"></p>
+  </div>
+</div>
+<script src="assets/app.js"></script>
+</body>
+</html>
