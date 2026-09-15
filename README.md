@@ -1,12 +1,11 @@
-# Swati Studio
+# Swati Studio — Clean Final
 
-GitHub Pages frontend connected to Supabase Auth and the `projects` table.
+A minimal professional landing page with separate Login and Register flows.
 
-## Upload
-Upload the contents of this folder to the root of your GitHub repository. Do not upload the outer folder itself if GitHub Pages cannot find `index.html`.
+## Authentication
+- Supabase Auth is connected.
+- Admin and normal-user roles must be managed securely in Supabase using the provided SQL setup.
+- Never expose a Supabase service-role key in frontend files.
 
-## Supabase
-Run `SUPABASE-SETUP.sql` once in Supabase SQL Editor. The frontend uses the Supabase project URL and publishable key in `assets/app.js`.
-
-## Important
-This build includes real email/password login, registration, session display, admin-role gate, and project metadata saving. It does **not** render a real AI face/voice video; that requires a separately approved rendering backend/API.
+## GitHub Pages
+Upload `index.html`, the `assets` folder, `SUPABASE-SETUP.sql`, and this README to the repository root.
