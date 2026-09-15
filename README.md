@@ -1,9 +1,11 @@
-# Swati Studio - Final
+# Swati Studio — Final Complete
 
-Clean professional landing page with a right-side Login/Register card and Supabase authentication.
+Upload the contents of this folder to the root of the GitHub Pages repository so `index.html` is at the repository root.
 
-## GitHub Pages
-Upload the contents of this folder to the repository root. Keep `index.html` and the `assets` folder together.
+## Admin setup
+1. Run `SUPABASE-SETUP.sql` in Supabase SQL Editor.
+2. Register the admin account on the website.
+3. Promote that account with the SQL statement at the bottom of the setup file.
+4. Open `/admin/` or use the Admin Login link.
 
-## Important
-The browser uses the Supabase publishable key only. Admin authorization must be enforced with Supabase database/RLS policies and an admin role in your project.
+Never use a Supabase service-role key in frontend code.
