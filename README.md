@@ -1,11 +1,9 @@
-# Swati Studio — Clean Final
+# Swati Studio - Final
 
-A minimal professional landing page with separate Login and Register flows.
-
-## Authentication
-- Supabase Auth is connected.
-- Admin and normal-user roles must be managed securely in Supabase using the provided SQL setup.
-- Never expose a Supabase service-role key in frontend files.
+Clean professional landing page with a right-side Login/Register card and Supabase authentication.
 
 ## GitHub Pages
-Upload `index.html`, the `assets` folder, `SUPABASE-SETUP.sql`, and this README to the repository root.
+Upload the contents of this folder to the repository root. Keep `index.html` and the `assets` folder together.
+
+## Important
+The browser uses the Supabase publishable key only. Admin authorization must be enforced with Supabase database/RLS policies and an admin role in your project.
