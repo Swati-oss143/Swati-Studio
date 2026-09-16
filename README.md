@@ -1,9 +1,13 @@
-# Swati Studio — TOTAL FINAL COMPLETE Blueprint Build
+# Swati Studio — Full A–Z Build
 
-Included: separate Home, Login, Register, Services, User Dashboard, Admin Login and Admin Dashboard pages; navigation, responsive styling, demo actions, dashboard sections, CMS/admin placeholders, and a Supabase schema starter.
+This package is the complete application scaffold for the next integration phase.
+It includes public pages, authentication pages, user dashboard, admin dashboard,
+role modules, CMS modules, services, projects, wallet, payments, notifications,
+support, audit logs, trash/restore, and Supabase setup SQL.
 
-## Important
-This ZIP is a complete navigable frontend/demo build. Live Supabase authentication, RLS, real AI APIs, payment gateway, email/notifications and production CRUD require credentials and backend configuration. Demo buttons intentionally show local confirmation instead of pretending to process real payments or data.
-
-## Run
-Open `index.html` in a browser or deploy the folder to static hosting. Apply `SUPABASE-SETUP.sql` only after reviewing and configuring security policies.
+## Setup
+1. Configure Supabase values in `config/env.example.js`.
+2. Run `SUPABASE-SETUP.sql` in Supabase SQL Editor.
+3. Add the Supabase browser client library or connect your preferred bundler.
+4. Configure AI and payment providers in `api/`.
+5. Test Auth, RLS, CRUD, uploads, payments, and role permissions before production.

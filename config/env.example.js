@@ -1,0 +1,6 @@
+window.SWATI_CONFIG = {
+  SUPABASE_URL: 'https://YOUR-PROJECT.supabase.co',
+  SUPABASE_ANON_KEY: 'YOUR-PUBLISHABLE-ANON-KEY',
+  AI_API_BASE: '/api/ai',
+  PAYMENT_API_BASE: '/api/payments'
+};
