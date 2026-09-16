@@ -1,11 +1,9 @@
-# Swati Studio — Final Complete
+# Swati Studio — TOTAL FINAL COMPLETE Blueprint Build
 
-Upload the contents of this folder to the root of the GitHub Pages repository so `index.html` is at the repository root.
+Included: separate Home, Login, Register, Services, User Dashboard, Admin Login and Admin Dashboard pages; navigation, responsive styling, demo actions, dashboard sections, CMS/admin placeholders, and a Supabase schema starter.
 
-## Admin setup
-1. Run `SUPABASE-SETUP.sql` in Supabase SQL Editor.
-2. Register the admin account on the website.
-3. Promote that account with the SQL statement at the bottom of the setup file.
-4. Open `/admin/` or use the Admin Login link.
+## Important
+This ZIP is a complete navigable frontend/demo build. Live Supabase authentication, RLS, real AI APIs, payment gateway, email/notifications and production CRUD require credentials and backend configuration. Demo buttons intentionally show local confirmation instead of pretending to process real payments or data.
 
-Never use a Supabase service-role key in frontend code.
+## Run
+Open `index.html` in a browser or deploy the folder to static hosting. Apply `SUPABASE-SETUP.sql` only after reviewing and configuring security policies.
