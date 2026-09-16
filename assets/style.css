@@ -13,3 +13,16 @@
 .admin-art h1{font-size:clamp(34px,4.5vw,64px);line-height:1.08;font-weight:950;letter-spacing:-1.5px}
 .admin-art .rainbow-text{display:inline-block;background:linear-gradient(90deg,#19b56b 0%,#f5c542 18%,#ed4f9b 36%,#ef5350 54%,#3867f2 72%,#17233d 88%,#fff 100%);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 2px 18px rgba(255,255,255,.12)}
 .admin-art .control-text{display:inline-block;background:linear-gradient(90deg,#fff 0%,#19b56b 18%,#f5c542 36%,#ed4f9b 54%,#ef5350 70%,#3867f2 86%,#17233d 100%);-webkit-background-clip:text;background-clip:text;color:transparent;font-size:.72em;letter-spacing:-.6px}
+
+
+/* Final admin login logo and white background correction */
+.admin-login { background: #fff !important; }
+.admin-login .admin-art { background: #fff !important; color: #111827; border-right: 1px solid #e5e7eb; }
+.admin-login .admin-form-side { background: #fff !important; }
+.admin-logo-lockup { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin-bottom: 24px; }
+.admin-logo-lockup img { display: block; width: min(330px, 82%); height: auto; max-height: 170px; object-fit: contain; object-position: left center; background: #fff; }
+.admin-login .admin-badge { color: #111827; background: #fff; border: 1px solid #d1d5db; }
+.admin-login .admin-art h1 { line-height: 1.08; }
+@media (max-width: 760px) {
+  .admin-logo-lockup img { width: min(280px, 100%); }
+}
