@@ -4,5 +4,15 @@
 @media(max-width:950px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}.app-shell{grid-template-columns:1fr}.side{position:fixed;left:-290px;z-index:40;width:265px;transition:.25s}.side.open{left:0}.mobile-toggle{display:inline-flex}.admin-login{grid-template-columns:1fr}.admin-art{padding:42px;min-height:310px}.admin-form-side{padding:10px 20px}}
 @media(max-width:580px){.topbar{padding:0 14px;height:auto;min-height:70px;gap:10px}.public-nav{gap:2px}.public-nav a{padding:8px;font-size:13px}.page{padding:24px 14px}.hero-copy{padding:28px 22px}.hero-panel{padding:22px}.grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.content{padding:20px 14px}.app-top{padding:0 14px}.app-top h1{font-size:20px}.admin-art h1{font-size:42px}}
 
-.brand-logo{width:42px;height:42px;display:block;flex:0 0 auto}.brand-logo.small{width:36px;height:36px}.brand-name{font-weight:900;letter-spacing:-.02em}.auth-split{min-height:100vh;display:grid;grid-template-columns:1.05fr .95fr;background:#fff}.auth-art{padding:clamp(30px,6vw,78px);display:flex;flex-direction:column;justify-content:center;color:#fff;background:linear-gradient(135deg,var(--green) 0%,var(--yellow) 28%,var(--pink) 53%,var(--red) 73%,var(--blue) 100%);position:relative;overflow:hidden}.auth-art:after{content:"";position:absolute;width:420px;height:420px;border:70px solid rgba(255,255,255,.16);border-radius:50%;right:-170px;bottom:-180px}.auth-art .brand{color:#fff;position:relative;z-index:1}.auth-art h1{font-size:clamp(42px,5vw,76px);line-height:1.02;margin:34px 0 18px;position:relative;z-index:1}.auth-art p{font-size:18px;max-width:480px;position:relative;z-index:1}.auth-form-side{display:grid;place-items:center;padding:28px;background:#fff}.auth-form-side .auth-card{box-shadow:none;border:0;max-width:440px}.auth-form-side .auth-card h1{font-size:38px}.auth-note{padding:12px 14px;border-radius:12px;background:#f4f7fb;color:var(--muted);font-size:13px}
-@media(max-width:800px){.auth-split{grid-template-columns:1fr}.auth-art{min-height:330px;padding:34px}.auth-art h1{font-size:48px;margin:24px 0 12px}.auth-form-side{padding:10px 18px}.auth-form-side .auth-card{padding:24px 8px}}
+/* SWATI STUDIO FINAL LOGO LOCK — scoped only to branding locations */
+.brand-logo{display:block;width:42px;height:42px;max-width:42px;max-height:42px;object-fit:contain;object-position:center;border-radius:12px;flex:0 0 42px;background:#071329}
+.brand-logo--large{width:76px;height:76px;max-width:76px;max-height:76px;flex-basis:76px;border-radius:20px}
+.admin-art .brand-logo{width:84px;height:84px;max-width:84px;max-height:84px;flex-basis:84px;border-radius:22px;margin-bottom:18px}
+.brand{min-width:0}
+.brand span:not(.brand-mark){min-width:0}
+.admin-login-brand{display:flex;align-items:center;gap:14px;color:#fff;font-size:22px;font-weight:900;margin-bottom:26px}
+.admin-login-brand .brand-logo{background:#071329}
+.admin-welcome{font-size:clamp(38px,5vw,65px);line-height:1.02;margin:8px 0 20px}
+/* Never let ordinary content images inherit branding dimensions. */
+main img:not(.brand-logo),section img:not(.brand-logo),article img:not(.brand-logo){max-width:100%;height:auto}
+@media(max-width:580px){.brand-logo{width:36px;height:36px;max-width:36px;max-height:36px;flex-basis:36px}.admin-art .brand-logo{width:68px;height:68px;max-width:68px;max-height:68px;flex-basis:68px}}
