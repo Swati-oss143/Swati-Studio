@@ -1,7 +1,8 @@
-import {createClient} from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
-const supabase=createClient('https://lmtqzkkyjebjdabahnnl.supabase.co','sb_publishable_RQOsIyFMOOegEknGAjNFsg_HVENkEEY');
-const $=id=>document.getElementById(id);let mode='login';
-function setMode(next){mode=next;$('loginTab').classList.toggle('active',mode==='login');$('registerTab').classList.toggle('active',mode==='register');$('nameField').classList.toggle('hidden',mode==='login');$('authTitle').textContent=mode==='login'?'Welcome back':'Create your account';$('authSub').textContent=mode==='login'?'Sign in to continue to Swati Studio.':'Register for Swati Studio.';$('submit').textContent=mode==='login'?'Login':'Register';$('message').textContent='';location.hash=mode;}
-$('loginTab').onclick=()=>setMode('login');$('registerTab').onclick=()=>setMode('register');
-$('authForm').onsubmit=async e=>{e.preventDefault();$('submit').disabled=true;$('message').textContent='';const email=$('email').value.trim(),password=$('password').value,name=$('name').value.trim();const result=mode==='login'?await supabase.auth.signInWithPassword({email,password}):await supabase.auth.signUp({email,password,options:{data:{display_name:name}}});$('submit').disabled=false;if(result.error){$('message').textContent=result.error.message;return;}if(mode==='register'){$('message').textContent='Registration successful. Check your email if confirmation is enabled.';}else{location.href='admin/';}};
-const hash=location.hash.replace('#','');if(hash==='register')setMode('register');else setMode('login');
+
+(function(){
+ const path=location.pathname.split('/').pop()||'index.html';
+ document.querySelectorAll('[data-active]').forEach(a=>{if(a.getAttribute('href')===path)a.classList.add('active')});
+ document.querySelectorAll('[data-menu-toggle]').forEach(b=>b.addEventListener('click',()=>document.querySelector('.side')?.classList.toggle('open')));
+ document.querySelectorAll('[data-demo-action]').forEach(b=>b.addEventListener('click',()=>{const target=b.dataset.demoAction;if(target)location.href=target;}));
+ document.querySelectorAll('form[data-message]').forEach(f=>f.addEventListener('submit',e=>{e.preventDefault();const box=f.querySelector('.form-message');if(box)box.textContent=f.dataset.message||'Form submitted. Connect backend to save data.';}));
+})();

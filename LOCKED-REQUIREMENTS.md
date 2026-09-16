@@ -1,0 +1,1 @@
+Locked: separate root-level HTML pages; no admin link on normal navigation; only admin role; admin-login special design; professional multicolour theme; working navigation structure.
