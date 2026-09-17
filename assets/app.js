@@ -1,17 +1,31 @@
 (function(){
   const path = location.pathname.split('/').pop() || 'index.html';
 
+  document.querySelectorAll('[data-active]').forEach((link) => {
+    if (link.getAttribute('href') === path) link.classList.add('active');
+  });
+
+  const side = document.querySelector('.side');
+  document.querySelectorAll('[data-menu-toggle]').forEach((button) => {
+    button.addEventListener('click', () => side?.classList.toggle('open'));
+  });
+
   document.querySelectorAll('.side a[href]').forEach((link) => {
-    const href = link.getAttribute('href');
-    if (href === path) link.classList.add('active');
     link.addEventListener('click', () => {
-      document.querySelector('.side')?.classList.remove('open');
+      if (window.matchMedia('(max-width: 760px)').matches) side?.classList.remove('open');
     });
   });
 
-  document.querySelectorAll('[data-menu-toggle]').forEach((button) => {
-    button.addEventListener('click', () => {
-      document.querySelector('.side')?.classList.toggle('open');
+  document.querySelectorAll('[data-logout]').forEach((link) => {
+    link.addEventListener('click', () => {
+      try {
+        Object.keys(localStorage).forEach((key) => {
+          if (/supabase|auth|session/i.test(key)) localStorage.removeItem(key);
+        });
+        Object.keys(sessionStorage).forEach((key) => {
+          if (/supabase|auth|session/i.test(key)) sessionStorage.removeItem(key);
+        });
+      } catch (_) {}
     });
   });
 
