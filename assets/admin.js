@@ -1,4 +1,51 @@
-import {createClient} from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
-const supabase=createClient('https://lmtqzkkyjebjdabahnnl.supabase.co','sb_publishable_RQOsIyFMOOegEknGAjNFsg_HVENkEEY');const $=id=>document.getElementById(id);
-async function run(){const {data:{user}}=await supabase.auth.getUser();if(!user){$('status').textContent='Please login first.';setTimeout(()=>location.href='admin-login.html',800);return;}const {data:profile,error}=await supabase.from('profiles').select('role').eq('id',user.id).maybeSingle();if(error||!profile||profile.role!=='admin'){$('status').textContent='Access denied. Admin role required.';await supabase.auth.signOut();return;}$('status').textContent=`Signed in as ${user.email}`;$('dashboard').classList.remove('hidden');const [u,p]=await Promise.all([supabase.from('profiles').select('id',{count:'exact',head:true}),supabase.from('projects').select('id',{count:'exact',head:true})]);$('users').textContent=u.count??'—';$('projects').textContent=p.count??'—';}
-$('logout').onclick=async()=>{await supabase.auth.signOut();location.href='admin-login.html';};run();
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+const supabase = createClient(
+  'https://lmtqzkkyjebjdabahnnl.supabase.co',
+  'sb_publishable_RQOsIyFMOOegEknGAjNFsg_HVENkEEY'
+);
+
+const $ = (id) => document.getElementById(id);
+
+async function countRows(table) {
+  const result = await supabase.from(table).select('id', { count: 'exact', head: true });
+  return result.error ? null : (result.count ?? 0);
+}
+
+async function initAdmin() {
+  const { data: { user }, error: userError } = await supabase.auth.getUser();
+  if (userError || !user) {
+    $('status').textContent = 'Session expired. Redirecting to Admin Login…';
+    setTimeout(() => { window.location.href = '../admin-login.html'; }, 700);
+    return;
+  }
+
+  const { data: admin, error: adminError } = await supabase
+    .from('admin_users')
+    .select('id, role, is_active')
+    .eq('id', user.id)
+    .eq('role', 'admin')
+    .eq('is_active', true)
+    .maybeSingle();
+
+  if (adminError || !admin) {
+    $('status').textContent = 'Access denied: active admin permission is required.';
+    await supabase.auth.signOut();
+    setTimeout(() => { window.location.href = '../admin-login.html'; }, 900);
+    return;
+  }
+
+  $('status').textContent = `Signed in securely as ${user.email}`;
+  const [users, projects] = await Promise.all([countRows('profiles'), countRows('projects')]);
+  $('usersCount').textContent = users ?? '—';
+  $('projectsCount').textContent = projects ?? '—';
+  $('revenueCount').textContent = '—';
+  $('ticketsCount').textContent = '—';
+}
+
+$('logout')?.addEventListener('click', async () => {
+  await supabase.auth.signOut();
+  window.location.href = '../admin-login.html';
+});
+
+initAdmin();
