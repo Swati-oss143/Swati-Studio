@@ -1,68 +1,104 @@
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 
-const SUPABASE_URL = 'https://lmtqzkkyjebjdabahnnl.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_RQOsIyFMOOegEknGAjNFsg_HVENkEEY';
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const supabase = createClient(
+  'https://lmtqzkkyjebjdabahnnl.supabase.co',
+  'sb_publishable_RQOsIyFMOOegEknGAjNFsg_HVENkEEY'
+);
 
-const form = document.querySelector('#registerForm, #loginForm, #adminLoginForm');
-const message = document.getElementById('msg');
+const form = document.querySelector('form');
+const msg = document.getElementById('msg');
 
-function showMessage(text, error = false) {
-  if (!message) return;
-  message.textContent = text;
-  message.classList.toggle('error', error);
+function showMessage(text, type = 'muted') {
+  if (!msg) return;
+  msg.className = `form-message ${type}`;
+  msg.textContent = text;
+}
+
+function getFormValues() {
+  const email = document.getElementById('email')?.value.trim().toLowerCase() || '';
+  const password = document.getElementById('password')?.value || '';
+  return { email, password };
+}
+
+function readableAuthError(error) {
+  const message = String(error?.message || 'Something went wrong.');
+  const lower = message.toLowerCase();
+
+  if (lower.includes('rate limit') || lower.includes('too many requests')) {
+    return 'Supabase email limit reached. Please wait before trying again, or disable email confirmation during testing in Supabase Auth settings.';
+  }
+  if (lower.includes('user already registered') || lower.includes('already been registered')) {
+    return 'This email is already registered. Please use Login or Forgot Password.';
+  }
+  if (lower.includes('password')) {
+    return 'Password must meet the minimum password rules configured in Supabase.';
+  }
+  if (lower.includes('invalid login credentials')) {
+    return 'Email or password is incorrect.';
+  }
+  return message;
 }
 
 form?.addEventListener('submit', async (event) => {
   event.preventDefault();
+
   const button = form.querySelector('button[type="submit"]');
-  const email = form.querySelector('input[type="email"]')?.value.trim().toLowerCase();
-  const password = form.querySelector('input[type="password"]')?.value || '';
+  if (button?.disabled) return;
 
+  const { email, password } = getFormValues();
   if (!email || !password) {
-    showMessage('Please enter your email and password.', true);
+    showMessage('Please enter your email and password.', 'error');
     return;
   }
 
-  if (form.id === 'registerForm' && password.length < 6) {
-    showMessage('Password must contain at least 6 characters.', true);
+  if (password.length < 6) {
+    showMessage('Password must be at least 6 characters.', 'error');
     return;
   }
 
-  if (button) button.disabled = true;
+  if (button) {
+    button.disabled = true;
+    button.dataset.originalText = button.textContent;
+    button.textContent = form.id === 'registerForm' ? 'Creating account…' : 'Signing in…';
+  }
   showMessage('Please wait…');
 
   try {
     let result;
+
     if (form.id === 'registerForm') {
       const name = document.getElementById('name')?.value.trim() || '';
       result = await supabase.auth.signUp({
         email,
         password,
-        options: { data: { display_name: name, full_name: name } }
+        options: { data: { display_name: name } }
       });
     } else {
       result = await supabase.auth.signInWithPassword({ email, password });
     }
 
-    if (result.error) throw result.error;
+    if (result.error) {
+      showMessage(readableAuthError(result.error), 'error');
+      return;
+    }
 
     if (form.id === 'registerForm') {
       if (result.data?.session) {
-        showMessage('Account created. Redirecting…');
+        showMessage('Account created successfully. Opening your dashboard…', 'success');
         window.location.assign('dashboard.html');
       } else {
-        showMessage('Registration successful. Check your email to confirm your account, then sign in.');
-        form.reset();
+        showMessage('Account created. Check your email to confirm your account, then sign in.', 'success');
       }
     } else {
-      showMessage('Login successful. Redirecting…');
-      window.location.assign(form.id === 'adminLoginForm' ? 'admin-index.html' : 'dashboard.html');
+      showMessage('Login successful. Opening your dashboard…', 'success');
+      window.location.assign('dashboard.html');
     }
   } catch (error) {
-    console.error('Authentication error:', error);
-    showMessage(error?.message || 'Registration/login failed. Please try again.', true);
+    showMessage(readableAuthError(error), 'error');
   } finally {
-    if (button) button.disabled = false;
+    if (button) {
+      button.disabled = false;
+      button.textContent = button.dataset.originalText || 'Submit';
+    }
   }
 });

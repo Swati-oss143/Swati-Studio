@@ -9,5 +9,3 @@
 @media(max-width:1050px){.landing-feature-grid{grid-template-columns:repeat(2,1fr)}.landing-hero{gap:25px}.auth-modern{gap:25px}}
 @media(max-width:760px){.public-topbar{align-items:flex-start;flex-direction:column;padding-block:14px}.public-nav{width:100%;justify-content:flex-start}.landing-hero,.auth-modern{grid-template-columns:1fr;padding-top:35px}.landing-copy h1{letter-spacing:-1.4px}.landing-visual{min-height:350px}.note-one{right:0}.note-two{left:0}.auth-story{padding:0}.auth-modern{padding-inline:18px}.auth-story h1{font-size:42px}.auth-panel{margin-top:8px}.auth-modern-card{padding:26px}}
 @media(max-width:480px){.landing-feature-grid,.step-grid{grid-template-columns:1fr}.landing-feature p{min-height:auto}.preview-window{transform:none}.floating-note{font-size:10px;padding:9px 11px}.note-one{top:8px}.note-two{bottom:8px}.auth-topbar{flex-direction:row;align-items:center;justify-content:space-between}.auth-topbar .brand{font-size:18px}.back-home{font-size:11px}}
-.form-message.error { color: #dc2626; }
-button:disabled { opacity: .65; cursor: wait; }
