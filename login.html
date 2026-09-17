@@ -1,1 +1,17 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>User Login | Swati Studio</title><link rel="stylesheet" href="assets/style.css"></head><body><main class="auth-split"><section class="auth-welcome"><div class="auth-logo">Swati Studio</div><h1>Welcome To User</h1><p>Sign in to continue to your workspace.</p></section><section class="auth-form-panel"><form class="auth-card" data-message="Login submitted. Connect Supabase Auth to enable real account access."><span class="eyebrow">Swati Studio</span><h1>User Login</h1><p class="muted">Sign in to continue to your workspace.</p><div class="field"><label>Email</label><input type="email" required placeholder="you@example.com"></div><div class="field"><label>Password</label><input type="password" required placeholder="••••••••"></div><button class="btn btn-primary" type="submit">Login</button><p class="form-message muted"></p><p class="muted">New here? <a href="register.html">Create account</a></p></form></section></main><footer class="footer">© 2026 Swati Studio · Creator workspace</footer><script src="assets/app.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Sign in | Swati Studio</title>
+  <link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/home-auth.css">
+</head>
+<body class="auth-page">
+  <header class="topbar public-topbar auth-topbar"><a class="brand" href="index.html"><span class="brand-mark">S</span><span>Swati Studio</span></a><a class="back-home" href="index.html">← Back to home</a></header>
+  <main class="auth-modern">
+    <section class="auth-story"><span class="eyebrow">Welcome back</span><h1>Your workspace is waiting.</h1><p>Sign in to continue creating, organizing and managing your work with Swati Studio.</p><div class="story-points"><span>✓ One organized workspace</span><span>✓ Fast access to your projects</span><span>✓ Simple and secure account flow</span></div></section>
+    <section class="auth-panel"><form class="auth-card auth-modern-card" id="loginForm"><div class="auth-card-heading"><span class="mini-mark">S</span><div><small>SWATI STUDIO</small><h2>Sign in to your account</h2></div></div><p class="muted">Enter your details to continue.</p><div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com"></div><div class="field"><label for="password">Password</label><input id="password" name="password" type="password" autocomplete="current-password" required placeholder="Enter your password"></div><div class="auth-options"><label class="remember"><input type="checkbox"> Remember me</label><a href="contact.html">Need help?</a></div><button class="btn btn-primary" type="submit">Sign in <span aria-hidden="true">→</span></button><p id="msg" class="form-message muted" role="status" aria-live="polite"></p><p class="auth-switch">New to Swati Studio? <a href="register.html">Create an account</a></p></form></section>
+  </main>
+  <footer class="footer">© 2026 Swati Studio</footer>
+  <script type="module" src="assets/auth.js"></script>
+</body>
+</html>
