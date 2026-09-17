@@ -1,1 +1,54 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin Dashboard | Swati Studio</title><link rel="stylesheet" href="../assets/style.css"></head><body><header><a class="brand" href="../index.html">✨ Swati Studio</a><nav><a href="../index.html">Website</a><button id="logout" class="ghost">Logout</button></nav></header><main class="admin-layout"><aside class="sidebar"><h3>Admin Control</h3><a class="active" href="index.html">Dashboard</a><a href="users.html">Users</a><a href="applications.html">Applications</a><a href="projects.html">Projects</a><a href="services.html">Services</a><a href="categories.html">Categories</a><a href="payments.html">Payments</a><a href="wallet.html">Wallet</a><a href="cms.html">Website CMS</a><a href="editor.html">Admin Editor</a><a href="audit-logs.html">Audit Logs</a><a href="trash.html">Trash</a><a href="notifications.html">Notifications</a><a href="settings.html">Settings</a></aside><section class="admin-content"><div id="dashboard" class="card"><span class="pill">ADMIN DASHBOARD</span><h1>Control Center</h1><p id="status">Admin control center</p><div class="dashboard"><div><b>Users</b><span id="users">0</span></div><div><b>Projects</b><span id="projects">0</span></div><div><b>Revenue</b><span id="revenueCount">0</span></div><div><b>Tickets</b><span id="ticketCount">0</span></div></div></div><div class="card section-grid"><article id="users"><h2>Users & Customers</h2><p>View, search, enable, disable, reset and delete users.</p></article><article id="projects"><h2>Projects</h2><p>Review, edit, archive and restore projects.</p></article><article id="services"><h2>Services & Categories</h2><p>Add, update, publish and organize services.</p></article><article id="payments"><h2>Payments & Wallet</h2><p>Coins, recharge, transactions and revenue.</p></article><article id="cms"><h2>Website CMS</h2><p>Edit pages, menus, banners, FAQ and SEO.</p></article><article id="logs"><h2>Audit Logs</h2><p>Track administrative actions and restore trash.</p></article><article id="settings"><h2>System Settings</h2><p>Maintenance mode, theme and system health.</p></article></div></section></main><script type="module" src="../assets/admin.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin Dashboard | Swati Studio</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="admin-page">
+<div class="admin-shell">
+  <aside class="admin-sidebar" id="adminSidebar">
+    <div class="admin-brand"><span class="brand-mark">S</span><div><strong>Swati Studio</strong><small>Owner Console</small></div></div>
+    <div class="admin-section-label">WORKSPACE</div>
+    <nav class="admin-nav" aria-label="Admin navigation">
+      <a class="active" href="index.html"><span>▦</span>Overview</a>
+      <a href="users.html"><span>◉</span>Users</a>
+      <a href="applications.html"><span>▤</span>Applications</a>
+      <a href="projects.html"><span>▣</span>Projects</a>
+      <a href="services.html"><span>✦</span>Services</a>
+      <a href="categories.html"><span>⌘</span>Categories</a>
+      <a href="payments.html"><span>₹</span>Payments</a>
+      <a href="wallet.html"><span>◈</span>Wallet</a>
+      <a href="cms.html"><span>▤</span>Website CMS</a>
+      <a href="editor.html"><span>✎</span>Page Editor</a>
+      <a href="notifications.html"><span>●</span>Notifications</a>
+      <a href="audit-logs.html"><span>☷</span>Audit Logs</a>
+      <a href="trash.html"><span>⌫</span>Trash</a>
+      <a href="settings.html"><span>⚙</span>Settings</a>
+    </nav>
+    <div class="admin-sidebar-bottom"><a href="../index.html">↗ View Website</a><button id="logout" class="admin-logout">↪ Logout</button></div>
+  </aside>
+  <section class="admin-main">
+    <header class="admin-topbar"><button class="admin-menu-toggle" id="menuToggle" aria-label="Open menu">☰</button><div><p class="admin-kicker">OWNER CONTROL CENTER</p><h1>Dashboard Overview</h1></div><div class="admin-top-actions"><span class="admin-status"><i></i> System online</span><a href="notifications.html" class="admin-icon-button" aria-label="Notifications">●</a></div></header>
+    <main class="admin-content">
+      <div class="admin-welcome"><div><span class="admin-badge">PRIVATE ADMIN AREA</span><h2>Manage your entire workspace.</h2><p>Monitor users, projects, services, payments and website content from one organized console.</p></div><a class="admin-primary-button" href="cms.html">Open Website CMS →</a></div>
+      <section class="admin-stat-grid" aria-label="Dashboard statistics">
+        <article class="admin-stat-card green"><span>Users</span><strong id="usersCount">—</strong><small>Total registered profiles</small></article>
+        <article class="admin-stat-card blue"><span>Projects</span><strong id="projectsCount">—</strong><small>Saved creator projects</small></article>
+        <article class="admin-stat-card pink"><span>Revenue</span><strong id="revenueCount">—</strong><small>Payment records</small></article>
+        <article class="admin-stat-card yellow"><span>Applications</span><strong id="applicationsCount">—</strong><small>Incoming requests</small></article>
+      </section>
+      <section class="admin-panel-grid">
+        <article class="admin-panel"><div class="admin-panel-head"><div><h3>Quick actions</h3><p>Jump directly to frequently used controls.</p></div></div><div class="admin-quick-grid"><a href="users.html">Manage users <span>→</span></a><a href="projects.html">Review projects <span>→</span></a><a href="services.html">Edit services <span>→</span></a><a href="payments.html">Review payments <span>→</span></a><a href="cms.html">Update website <span>→</span></a><a href="settings.html">System settings <span>→</span></a></div></article>
+        <article class="admin-panel"><div class="admin-panel-head"><div><h3>System checklist</h3><p>Keep the owner console organized.</p></div></div><ul class="admin-checklist"><li><span>✓</span> Navigation is grouped by function</li><li><span>✓</span> Owner-only dashboard entry</li><li><span>✓</span> Responsive sidebar on mobile</li><li><span>✓</span> Existing pages remain linked</li></ul></article>
+      </section>
+    </main>
+  </section>
+</div>
+<script type="module" src="../assets/admin.js"></script>
+<script>
+const toggle=document.getElementById('menuToggle');const sidebar=document.getElementById('adminSidebar');
+toggle?.addEventListener('click',()=>sidebar.classList.toggle('open'));
+</script>
+</body>
+</html>
